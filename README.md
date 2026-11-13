@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Release Atlas
 
-## Getting Started
+A practical table of contents for user-facing features in React 19.2 and 19.3,
+and Next.js 15.3 through 16.4. Each feature guide explains what changed, the
+problem it addresses, before-and-after code, when to use or avoid it, and links
+to official documentation. Selected React and Next.js APIs also have live demos.
 
-First, run the development server:
+The release list follows the official announcement posts. Performance,
+debugging, and tooling-only changes are excluded. Releases without a qualifying
+app-facing feature remain in the index with an explanation. The React 19.2
+guide also labels `use()`, Suspense, and `useTransition` as earlier APIs rather
+than new 19.2 functionality.
+
+The interface uses Tailwind CSS v4 utilities, with global CSS reserved for
+theme tokens, base styles, motion preferences, and View Transition animations.
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validate
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+npm run build
+```

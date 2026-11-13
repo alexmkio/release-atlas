@@ -1,26 +1,114 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-paper: #f4f3ed;
+  --color-paper-bright: #fcfbf7;
+  --color-ink: #20231d;
+  --color-muted: #73766c;
+  --color-line: #d9d9cf;
+  --color-acid: #d1f36a;
+  --color-coral: #ed6f52;
+  --color-olive: #748d2a;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 3px solid #596f1c;
+    outline-offset: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes pending-pulse {
+  to {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
+::view-transition-old(.from-left),
+::view-transition-new(.from-left),
+::view-transition-old(.from-right),
+::view-transition-new(.from-right),
+::view-transition-old(.to-left),
+::view-transition-new(.to-left),
+::view-transition-old(.to-right),
+::view-transition-new(.to-right) {
+  animation-duration: 260ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+::view-transition-new(.from-right) {
+  animation-name: atlas-slide-in-right;
+}
+
+::view-transition-new(.from-left) {
+  animation-name: atlas-slide-in-left;
+}
+
+::view-transition-old(.to-left) {
+  animation-name: atlas-slide-out-left;
+}
+
+::view-transition-old(.to-right) {
+  animation-name: atlas-slide-out-right;
+}
+
+@keyframes atlas-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+}
+
+@keyframes atlas-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+}
+
+@keyframes atlas-slide-out-left {
+  to {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+}
+
+@keyframes atlas-slide-out-right {
+  to {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
